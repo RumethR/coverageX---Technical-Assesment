@@ -20,7 +20,6 @@ A simple SwiftUI app that displays a list of users with their names and profile 
 
 ## Answers to questions in the technical assestment specification
 
-Please include a short note with your response, explaining:
 • What were your priorities, and why? 
     - To demonstrate that I have a fundamental understanding of MVVM, a good level of understanding on concepts such as state management, generics, concurrency, propery wrappers, etc. 
 
