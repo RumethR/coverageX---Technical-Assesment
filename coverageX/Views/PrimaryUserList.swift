@@ -15,12 +15,14 @@ struct PrimaryUserListView: View {
             switch viewModel.viewState {
             case .content(let content):
                 List(content) { user in
-                    UserListRowView(user: user)
+                    NavigationLink(destination: UserProfileView(user)) {
+                        UserListRowView(user: user)
+                    }
                 }
             case .loading:
                 ProgressView()
             case .error:
-                Text("Ammatasiri error")
+                Text("Oh no. Something went wrong :(. Pull down to try again.")
                     .font(.largeTitle)
                     .foregroundStyle(.red)
             }
