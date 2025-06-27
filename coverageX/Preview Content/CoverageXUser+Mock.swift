@@ -11,10 +11,10 @@ import Foundation
 extension CoverageXUser {
     static let mock: Self = .init(
         name: "Juan Manuel",
-        thumbnailURL: URL(string: "https://randomuser.me/api/portraits/thumb/men/58.jpg")!,
+        thumbnailURL: "https://randomuser.me/api/portraits/thumb/men/58.jpg",
         email: "juanmanuel.navarrete@example.com",
         phoneNumber: "(611) 157 7656",
-        profilePicture: URL(string: "https://randomuser.me/api/portraits/men/58.jpg")!
+        profilePicture: "https://randomuser.me/api/portraits/thumb/men/58.jpg"
     )
 }
 #endif

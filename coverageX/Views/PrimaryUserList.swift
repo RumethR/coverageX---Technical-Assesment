@@ -11,9 +11,27 @@ struct PrimaryUserListView: View {
     @StateObject var viewModel: PrimaryUserListViewModel = .init()
     
     var body: some View {
-        List {
-            
+        Group {
+            switch viewModel.viewState {
+            case .content(let content):
+                List(content) { user in
+                    UserListRowView(user: user)
+                }
+            case .loading:
+                ProgressView()
+            case .error:
+                Text("Ammatasiri error")
+                    .font(.largeTitle)
+                    .foregroundStyle(.red)
+            }
         }
+        .task {
+            await viewModel.fetchUsers()
+        }
+        .refreshable {
+            await viewModel.fetchUsers()
+        }
+        .navigationTitle("Users")
     }
 }
 

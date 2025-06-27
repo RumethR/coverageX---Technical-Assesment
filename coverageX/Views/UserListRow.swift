@@ -13,19 +13,33 @@ struct UserListRowView: View {
 
     var body: some View {
         HStack {
-            AsyncImage(url: user.thumbnailURL) { image in
-                image
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 24, height: 24)
-            } placeholder: {
-                ProgressView()
+            AsyncImage(url: URL(string: user.thumbnailURL)) { phase in
+                switch phase {
+                case .empty:
+                    ProgressView() // or any loading placeholder
+
+                case .success(let image):
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 24, height: 24)
+                        .clipShape(Circle())
+
+                case .failure:
+                    // fallback or error icon
+                    Image(systemName: "person.fill")
+                        .resizable()
+                        .frame(width: 24, height: 24)
+
+                @unknown default:
+                    EmptyView()
+                }
             }
-            .frame(width: 48, height: 48)
-            .clipShape(Circle())
 
             Text(user.name)
                 .font(.headline)
+
+            Spacer()
         }
     }
 }

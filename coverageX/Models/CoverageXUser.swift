@@ -11,8 +11,8 @@ import Foundation
 struct CoverageXUser: Identifiable {
     let id = UUID()
     var name: String
-    var thumbnailURL: URL
+    var thumbnailURL: String
     var email: String
     var phoneNumber: String
-    var profilePicture: URL
+    var profilePicture: String
 }
